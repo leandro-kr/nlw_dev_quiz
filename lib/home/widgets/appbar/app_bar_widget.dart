@@ -1,3 +1,4 @@
+import 'package:DevQuiz/core/app_colors.dart';
 import 'package:DevQuiz/core/app_gradients.dart';
 import 'package:DevQuiz/core/app_text_styles.dart';
 import 'package:DevQuiz/home/widgets/score_card/score_card_widget.dart';
@@ -19,15 +20,19 @@ class AppBarWidget extends PreferredSize {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text.rich(
-                        TextSpan(
-                            text: 'Olá, ',
-                            style: AppTextStyles.title,
-                            children: [
-                              TextSpan(
-                                  text: 'Krilex',
-                                  style: AppTextStyles.titleBold),
-                            ]),
+                      Flexible(
+                        child: Text.rich(
+                          TextSpan(
+                              text: 'Olá, ',
+                              style: AppTextStyles.title,
+                              children: [
+                                TextSpan(
+                                    text: 'Leandro Soares de Almeida',
+                                    style: AppTextStyles.titleBold),
+                              ]),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       Container(
                         width: 58,
