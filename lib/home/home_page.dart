@@ -1,3 +1,4 @@
+import 'package:DevQuiz/challenge/challenge_page.dart';
 import 'package:DevQuiz/challenge/widgets/quiz/quiz_widget.dart';
 import 'package:DevQuiz/core/app_colors.dart';
 import 'package:DevQuiz/home/home_controller.dart';
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+  BuildContext? _context;
 
   @override
   void initState() {
@@ -30,6 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    _context = this.context;
     if (controller.state == HomeState.success) {
       return Scaffold(
         appBar: AppBarWidget(
@@ -75,6 +78,15 @@ class _HomePageState extends State<HomePage> {
                   children: controller.quizes!
                       .map((e) => QuizCardWidget(
                             title: e.title,
+                            onTap: () {
+                              Navigator.push(
+                                  _context!,
+                                  MaterialPageRoute(
+                                      builder: (_context) => ChallengePage(
+                                            questions: e.questions,
+                                            title: e.title,
+                                          )));
+                            },
                             completed:
                                 "${e.questionAnswered} de ${e.questions.length}",
                             percent: e.questionAnswered / e.questions.length,

@@ -3,13 +3,16 @@ import 'dart:convert';
 class AnswerModel {
   final String title;
   final bool isRight;
+  final bool isSelected;
 
-  AnswerModel({required this.title, this.isRight = false});
+  AnswerModel(
+      {required this.title, this.isRight = false, this.isSelected = false});
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
       'isRight': isRight,
+      'isSelected': isSelected,
     };
   }
 
@@ -17,6 +20,7 @@ class AnswerModel {
     return AnswerModel(
       title: map['title'],
       isRight: map['isRight'] ?? false,
+      isSelected: map['isSelected'] ?? false,
     );
   }
 
